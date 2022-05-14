@@ -33,4 +33,10 @@ jobs:
 
       - name: Display dotnet dotnet-version
         run: dotnet --version
-        
+
+      - run: echo "The preinstalled tools are located here on the runner ${{ runner.tool_cache}}."
+
+      - name: list files in tool runner.tool_cache
+        run: |
+          ls ${{ runner.tool_cache}}
+          
