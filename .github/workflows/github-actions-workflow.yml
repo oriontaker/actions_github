@@ -1,5 +1,7 @@
 name:  Actions Demo
-on: push
+on: 
+  push: 
+    branches: [ master ]
 jobs:
   Example-actions-job:
     name: Exploring Github Actions
@@ -41,5 +43,12 @@ jobs:
           ls ${{ runner.tool_cache}}
       
       - run: echo "This jobs's status is ${{ job.status }}."
+    
+  Second-job:
+    name: The second job running on another runner.
+    runs-on: ubuntu-20.04
+    needs: Example-actions-job
+    steps:
+      - run: echo "This job is now running on a ${{ runner.os }} server hosted by github"
       
           
